@@ -1,6 +1,7 @@
 import os, json
 
-DATA_FILE = "phonebook.json"
+UTILITIES_FOLDER = os.path.dirname(__file__)
+DATA_FILE = os.path.join(UTILITIES_FOLDER, "phonebook.json")
 
 
 def menu():
