@@ -62,6 +62,7 @@ def find_person():
     else:
         print(f"Couldn't find person: {user_input}")
 
+
 def close_app():
     print("Have a nice day!")
     exit()
