@@ -43,8 +43,20 @@ def add_person():
 
 
 def find_person():
-    pass
+    user_input = input("Person's name?")
 
+    phonebook = load_phonebook()
+    if not phonebook:
+        print("Phonebook is empty. Please add a person.")
+        return
+
+    for phone, person_data in phonebook.items():
+        person_name = person_data["name"]
+        if person_name.lower() == user_input.lower():
+            print(f"Phone: {phone}\n"
+                  f"Name: {person_name}\n"
+                  f"Address: {person_data['address']}")
+            break
 
 def close_app():
     print("Have a nice day!")
@@ -69,3 +81,7 @@ def load_phonebook():
 def save_phonebook(phonebook):
     with open(DATA_FILE, "w") as f:
         json.dump(phonebook, f)
+
+
+if __name__ == '__main__':
+    find_person()
