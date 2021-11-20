@@ -11,10 +11,27 @@ def say_hello2(name, age, address, email):
     print(f"Hello {name}! You are {age} old. You are from {address}. Email: {email}")
 
 
-say_hello2("tamas@gmail.com", "Tamás", 19, "Pécs")
-say_hello2(
-    address="Eger",
-    name="Kriszta",
-    age=20,
-    email="kriszta@gmail.com"
-)
+#say_hello2("tamas@gmail.com", "Tamás", 19, "Pécs")
+# say_hello2(
+#     address="Eger",
+#     name="Kriszta",
+#     age=20,
+#     email="kriszta@gmail.com"
+# )
+
+# parameter annotation
+def say_hello3(name: str, age: int, address: str, email: str):
+    print(f"Hello {name}! You are {age} old. You are from {address}. Email: {email}")
+
+
+# docstring
+def say_hello4(name: str, age: int, address: str, email: str):
+    '''
+    This function prints out some data about a person
+    :param name: Person name
+    :param age: Person age
+    :param address: Address
+    :param email:  email
+    :return: None
+    '''
+    print(f"Hello {name}! You are {age} old. You are from {address}. Email: {email}")
