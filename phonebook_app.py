@@ -7,7 +7,7 @@ def main():
     if menu_choice == "4":
         functions.close_app()
     elif menu_choice == "1":
-        functions.list_phonebook()
+        functions.print_phonebook()
     elif menu_choice == "2":
         functions.add_person()
     elif menu_choice == "3":

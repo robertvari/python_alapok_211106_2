@@ -5,7 +5,7 @@ DATA_FILE = "phonebook.json"
 
 def menu():
     print("="*50, "PHONEBOOK APP: MAIN MENU", "="*50)
-    print("1. List phonebook\n"
+    print("1. Print phonebook\n"
           "2. Add person\n"
           "3. Find person\n"
           "4. Exit")
@@ -14,13 +14,19 @@ def menu():
     return user_input
 
 
-def list_phonebook():
+def print_phonebook():
     phonebook = load_phonebook()
     if not phonebook:
         print("Phonebook doesn't exists. Please add a person.")
         return
 
-    print(phonebook)
+    for phone, person_data in phonebook.items():
+        print("="*50)
+        print(f"Phone: {phone}\n"
+              f"Name: {person_data['name']}\n"
+              f"Address: {person_data['address']}")
+        print("=" * 50)
+
 
 
 def add_person():
