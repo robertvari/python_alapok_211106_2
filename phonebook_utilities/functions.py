@@ -24,11 +24,13 @@ def list_phonebook():
 
 
 def add_person():
+    phonebook = load_phonebook()
+
     name = input("Name:")
     phone = input("Phone:")
     address = input("Address:")
 
-    phonebook = {phone: {"name": name, "address": address}}
+    phonebook[phone] = {"name": name, "address": address}
 
     save_phonebook(phonebook)
     print("Data saved.")
@@ -45,13 +47,13 @@ def close_app():
 
 def load_phonebook():
     '''
-    Returns a dictionary with phonebook data if exists. Else returns None
-    :return: dict/None
+    Returns a dictionary with phonebook data if exists.
+    :return: dict
     '''
 
     # check if phonebook.json exists
     if not os.path.exists(DATA_FILE):
-        return
+        return {}
 
     # read json file and return as a dictionary
     with open(DATA_FILE) as f:
