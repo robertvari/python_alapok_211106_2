@@ -28,7 +28,6 @@ def print_phonebook():
         print("=" * 50)
 
 
-
 def add_person():
     phonebook = load_phonebook()
 
@@ -50,13 +49,17 @@ def find_person():
         print("Phonebook is empty. Please add a person.")
         return
 
+    result = None
     for phone, person_data in phonebook.items():
         person_name = person_data["name"]
         if person_name.lower() == user_input.lower():
-            print(f"Phone: {phone}\n"
-                  f"Name: {person_name}\n"
-                  f"Address: {person_data['address']}")
+            result = f"Phone: {phone}\nName: {person_name}\nAddress: {person_data['address']}"
             break
+
+    if result:
+        print(result)
+    else:
+        print(f"Couldn't find person: {user_input}")
 
 def close_app():
     print("Have a nice day!")
