@@ -41,4 +41,23 @@ def say_hello4(name: str, age: int, address: str, email: str):
 def say_hello5(name, age, address="Budapest", email="robert@gmail.com"):
     print(f"Hello {name}! You are {age} old. You are from {address}. Email: {email}")
 
-say_hello5("Tamás", 20)
+# say_hello5("Tamás", 20)
+
+# random length argument list
+def say_hello6(*args):
+    for i in args:
+        print(i)
+
+# say_hello6("Robert", 12345, 3.14, ["Alma", "körte", "szilve"])
+
+
+# random length keyword argument list
+def say_hello7(**kwargs):
+    print(kwargs)
+
+say_hello7(
+    address="Eger",
+    name="Kriszta",
+    age=20,
+    email="kriszta@gmail.com"
+)
