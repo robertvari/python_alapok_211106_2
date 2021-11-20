@@ -15,11 +15,23 @@ def menu():
 
 
 def list_phonebook():
-    pass
+    phonebook = load_phonebook()
+    if not phonebook:
+        print("Phonebook doesn't exists. Please add a person.")
+        return
+
+    print(phonebook)
 
 
 def add_person():
-    pass
+    name = input("Name:")
+    phone = input("Phone:")
+    address = input("Address:")
+
+    phonebook = {phone: {"name": name, "address": address}}
+
+    save_phonebook(phonebook)
+    print("Data saved.")
 
 
 def find_person():
@@ -46,5 +58,6 @@ def load_phonebook():
         return json.load(f)
 
 
-def save_phonebook():
-    pass
+def save_phonebook(phonebook):
+    with open(DATA_FILE, "w") as f:
+        json.dump(phonebook, f)
