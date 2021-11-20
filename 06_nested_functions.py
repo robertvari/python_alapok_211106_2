@@ -1,9 +1,9 @@
-def main():
+def main(name):
     print("Hello. I'm the main function")
 
-    name = "Robert"
-
     def nested_function():
-        print("Hello. I'm the nested_function")
+        print(f"Hello {name}")
 
-main()
+    nested_function()
+
+main("Robert")
