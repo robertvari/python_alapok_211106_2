@@ -1,10 +1,13 @@
+# global scope
 # global variable
 name = "Tamás"
 
 
 def say_may_name():
+    # local scope
     # local variable
     name = "Robert"
+    age = 20
     print(f"My name is {name}.")
 
 
