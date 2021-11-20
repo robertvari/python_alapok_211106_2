@@ -35,3 +35,10 @@ def say_hello4(name: str, age: int, address: str, email: str):
     :return: None
     '''
     print(f"Hello {name}! You are {age} old. You are from {address}. Email: {email}")
+
+
+# default parameters
+def say_hello5(name, age, address="Budapest", email="robert@gmail.com"):
+    print(f"Hello {name}! You are {age} old. You are from {address}. Email: {email}")
+
+say_hello5("Tamás", 20)
