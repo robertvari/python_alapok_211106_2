@@ -14,6 +14,5 @@ def main():
     create_thumbnails(images, watermark_text)
 
 
-
 if __name__ == '__main__':
     main()
