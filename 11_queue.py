@@ -17,6 +17,13 @@ def worker():
     while not job_list.empty():
         next_job = job_list.get()
         print(f"{threading.current_thread().name} working on {next_job}")
-        time.sleep(random.randint(1, 10))
+        time.sleep(random.randint(1, 6))
+
+        job_list.task_done()
 
     print(f"{threading.current_thread().name} finished.")
+
+
+for _ in range(6):
+    t = threading.Thread(target=worker)
+    t.start()
