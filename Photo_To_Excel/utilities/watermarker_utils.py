@@ -1,5 +1,7 @@
 from PIL import Image, ImageDraw, ImageFont
-import os
+import os, threading, queue
+
+job_list = queue.Queue()
 
 
 def create_thumbnails(image_list: list, watermark_text: str):
@@ -9,6 +11,17 @@ def create_thumbnails(image_list: list, watermark_text: str):
         os.makedirs(destination_folder)
 
     for photo_file in image_list:
+        job_list.put(photo_file)
+
+    for _ in range(6):
+        t = threading.Thread(target=worker, args=[destination_folder, watermark_text])
+        t.start()
+
+
+def worker(destination_folder, watermark_text):
+    while not job_list.empty():
+        photo_file = job_list.get()
+
         img = Image.open(photo_file)
 
         # resize image
