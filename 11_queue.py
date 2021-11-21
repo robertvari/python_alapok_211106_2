@@ -9,3 +9,14 @@ file_list = get_files(r"C:\Work\_PythonSuli\pycore-211106\photos")
 
 for file in file_list:
     job_list.put(file)
+
+
+def worker():
+    print(f"{threading.current_thread().name} started.")
+
+    while not job_list.empty():
+        next_job = job_list.get()
+        print(f"{threading.current_thread().name} working on {next_job}")
+        time.sleep(random.randint(1, 10))
+
+    print(f"{threading.current_thread().name} finished.")
