@@ -12,8 +12,14 @@ def get_files(root_folder: str, files=[], name_filter=None):
         if os.path.isfile(os.path.join(root_folder, i))  # condition
     ]
 
+    # filter found files
+    if name_filter:
+        all_files = [
+            i for i in all_files # loop function
+            if name_filter.lower() in os.path.basename(i).lower()  # condition
+        ]
 
 
 
 if __name__ == '__main__':
-    get_files(r"C:\Work\_PythonSuli\pycore-211106")
+    get_files(r"C:\Work\_PythonSuli\pycore-211106", name_filter="bitmap")
