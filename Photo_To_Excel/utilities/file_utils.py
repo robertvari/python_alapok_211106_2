@@ -1,4 +1,5 @@
 import os
+from openpyxl import Workbook
 
 
 def get_folder_path():
@@ -42,6 +43,41 @@ def get_files(root_folder: str, files=[], name_filter=None):
             get_files(folder, files, name_filter)
 
     return files
+
+
+def save_excel(photo_data: list, folder_path):
+    # create excel workbook
+    workbook = Workbook()
+    sheet = workbook.active
+
+    sheet["A1"] = "File Path"
+    sheet.column_dimensions['A'].width = 70
+
+    sheet["B1"] = "Date"
+    sheet.column_dimensions['B'].width = 40
+
+    sheet["C1"] = "Size"
+    sheet.column_dimensions['C'].width = 40
+
+    sheet["D1"] = "Camera"
+    sheet.column_dimensions['D'].width = 30
+
+    sheet["E1"] = "Focal Length"
+    sheet.column_dimensions['E'].width = 30
+
+    sheet["F1"] = "ISO"
+
+    for index, data in enumerate(photo_data):
+        row = index + 3
+
+        sheet[f"A{row}"] = data["file_path"]
+        sheet[f"C{row}"] = f"{data['image_size'][0]}x{data['image_size'][1]}"
+        sheet[f"F{row}"] = data["ISOSpeedRatings"]
+        sheet[f"B{row}"] = data["DateTime"]
+        sheet[f"D{row}"] = data["Model"]
+        sheet[f"E{row}"] = data["FocalLength"]
+
+    workbook.save(os.path.join(folder_path, "data.xlsx"))
 
 
 if __name__ == '__main__':

@@ -1,4 +1,4 @@
-from utilities.file_utils import get_folder_path, get_files
+from utilities.file_utils import get_folder_path, get_files, save_excel
 from utilities.photo_data import get_photo_data
 
 
@@ -18,6 +18,7 @@ def main():
     photo_data_list = get_photo_data(photo_files)
 
     # save excel file
+    save_excel(photo_data_list, folder_path)
 
 
 if __name__ == '__main__':
