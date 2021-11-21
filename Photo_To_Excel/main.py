@@ -3,9 +3,7 @@ from utilities.photo_data import get_photo_data
 
 
 def main():
-    # folder_path = get_folder_path()
-    # todo REMOVE THIS!
-    folder_path = r"C:\Work\_PythonSuli\pycore-211106\photos"
+    folder_path = get_folder_path()
 
     # get all .jpg files from folder
     photo_files = get_files(folder_path, name_filter=".jpg")
