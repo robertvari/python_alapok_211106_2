@@ -1,26 +1,24 @@
 import time, random
-from utilities.decorators import my_timer
+from utilities.decorators import my_timer, my_logger
 
 
+@my_logger
 @my_timer
 def worker1():
-    print("Worker1 started...")
     time.sleep(random.randint(1, 10))
-    print("Worker1 finished!")
 
 
+@my_logger
 @my_timer
 def worker2():
-    print("Worker2 started...")
-    time.sleep(random.randint(1, 10))
-    print("Worker2 finished!")
-
-
-@my_timer
-def my_function():
     time.sleep(random.randint(1, 10))
 
+
+@my_logger
+def say_hello(name):
+    print(f"Hello {name}")
 
 # worker1()
 # worker2()
-my_function()
+
+say_hello("Robert")
