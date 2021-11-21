@@ -75,7 +75,7 @@ def save_excel(photo_data: list, folder_path):
         sheet[f"F{row}"] = data["ISOSpeedRatings"]
         sheet[f"B{row}"] = data["DateTime"]
         sheet[f"D{row}"] = data["Model"]
-        sheet[f"E{row}"] = data["FocalLength"]
+        sheet[f"E{row}"] = str(data["FocalLength"])
 
     workbook.save(os.path.join(folder_path, "data.xlsx"))
 
